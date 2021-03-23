@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/200d11d5ef.js" crossorigin="anonymous"></script>
+
+    <title>Top navbar 반응형 버전.</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        button {
+            outline: 0;
+            background: transparent;
+            border: 0;
+        }
+
+
+
+
+
+
+        .menu__bar {
+
+            position: relative;
+            height: auto;
+            display: flex;
+            align-items: center;
+            background-color: black;
+            color: white;
+
+        }
+
+        .menu__list {
+            display: block;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+
+
+        }
+
+        .menu__list.active {
+
+            background-color: #4CAF50;
+        }
+
+        .menu__list.active:hover {
+            color: white;
+            background-color: #4CAF50;
+        }
+
+
+        .menu__list:hover {
+            cursor: pointer;
+            color: black;
+            background-color: #cccccc;
+        }
+
+        .menu__toggle__btn {
+            font-size: 1.3rem;
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            color: white;
+            display: none;
+            cursor: pointer;
+            width: 50px;
+            height: 48px;
+        }
+
+        /* 반응형 */
+        @media screen and (max-width:600px) {
+
+
+            .menu__list:not(:first-child) {
+                display: none;
+            }
+
+            .menu__list.responsive {
+                display: block;
+            }
+
+
+
+            .menu__toggle__btn {
+                display: block;
+            }
+
+
+
+
+            .menu__bar.open {
+                display: block;
+            }
+
+            .menu__toggle__btn:hover {
+
+                background-color: #cccccc;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="top__menu">
+        <ul class="menu__bar">
+            <li class="menu__list active">Home</li>
+            <li class="menu__list">News</li>
+            <li class="menu__list">Contact</li>
+            <li class="menu__list">About</li>
+        </ul>
+        <button class="menu__toggle__btn"><i class="fas fa-bars"></i></button>
+    </div>
+    <script>
+        const menuToggleBtn = document.querySelector(".menu__toggle__btn");
+        const topMenu = document.querySelector(".menu__bar");
+        const menulist = document.querySelectorAll(".menu__list");
+
+
+        menuToggleBtn.addEventListener('click', () => {
+            topMenu.classList.toggle("open");
+
+
+            menulist.forEach((menu) => {
+                if (topMenu.className === "menu__bar open") {
+                    menu.classList.add("responsive");
+                }
+                else {
+                    menu.classList.remove("responsive");
+                }
+
+            });
+
+
+        });
+
+    </script>
+</body>
+
+</html>
